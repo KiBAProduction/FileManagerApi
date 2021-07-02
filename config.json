@@ -1,0 +1,23 @@
+{
+    "ACCESS_SECRET_KEY": "519a78912b88c8b52221e7bc0c9220cfe10133e0ac0dc41b8e9d071d8ccfcc937b9de214d86edf1bb2d03510a5011d4ffae3ec4a7249b9e185d1f3b658b93281",
+    "REFRESH_SECRECT_KEY": "42e8f26a9b2d76b4e9ad4a9bcbda32799bc5b22437047da12400f772cafa3ff7abc72badfd6c7220104985c5a989811aa05cb209b64e6273f3720d81c73e03f8",
+    "PORT": "3000",
+    "HOMES": "/home/zulgard/Documents/FileManagerApi/homes",
+    "users": [
+        {
+            "id": 1,
+            "username": "antoine",
+            "password": "123123"
+        },
+        {
+            "id": 2,
+            "username": "david",
+            "password": "123123"
+        },
+        {
+            "id": 3,
+            "username": "clement",
+            "password": "123123"
+        }
+    ]
+}

@@ -1,7 +1,8 @@
 const path = require('path');
 const fs = require('fs');
+const config = require('../config.json');
 
-const ROOT = 'D:\\\\www\\';
+const ROOT = config.HOMES;
 
 async function scandir(cwd) {
     let folderList = [];
@@ -21,9 +22,6 @@ async function scandir(cwd) {
     } catch (err) {
         throw new Error(err);
     }
-
-
-
 
     // files.forEach(function (name) {
     //     const filePath = path.join(currentDirPath, name);
