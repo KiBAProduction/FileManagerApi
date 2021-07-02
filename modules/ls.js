@@ -1,15 +1,9 @@
 const path = require('path');
 const fs = require('fs');
-const config = require('../config.json');
-const jwt = require('jsonwebtoken');
 const ROOT = path.join(__dirname, '../homes');
 
 async function scandir(cwd, username) {
-    let folderList = [];
-    let fileList = [];
-    
     const currentDirPath = path.join(ROOT, username, cwd);
-
     try {
         const files = await fs.promises.readdir(currentDirPath);
         let promises = files.map(async file => {
@@ -22,23 +16,5 @@ async function scandir(cwd, username) {
     } catch (err) {
         throw new Error(err);
     }
-
-    // files.forEach(function (name) {
-    //     const filePath = path.join(currentDirPath, name);
-    //     const stat = fs.statSync(filePath);
-    //     if (stat.isFile()) {
-    //         fileList.push({ file: name, size: stat.size, time: stat.atime, isFile: true })
-    //     } else if (stat.isDirectory()) {
-    //         folderList.push({ file: name, size: null, time: stat.atime, isFile: false })
-    //     }
-    // });
-    // console.log([...folderList, ...fileList]);
-    // return [...folderList, ...fileList];
-
 }
-
-
-//export default scandir
-//module.exports = scandir;
-
 module.exports = { scandir }
