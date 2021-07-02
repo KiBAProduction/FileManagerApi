@@ -85,7 +85,24 @@ app.post('/ls', async (req, res) => {
             username = user.username;
         }
     });
-    const data = await scandir('/', username);
+    const data = await scandir(req.body.cwd, username);
+    console.log('data', data);
+    return res.status(200).json({
+        data: data
+    });
+});
+
+app.post('/rm', async (req, res) => {
+    let username;
+    jwt.verify(req.body.token, config.ACCESS_SECRET_KEY, (error, user) => {
+        if (error) {
+            return res.status(500).json("Failed to authenticate.");
+        }
+        else if (user) {
+            username = user.username;
+        }
+    });
+    const data = await scandir(req.body.cwd, username);
     console.log('data', data);
     return res.status(200).json({
         data: data
