@@ -5,9 +5,7 @@ const jwt = require('jsonwebtoken');
 const ROOT = path.join(__dirname, '../homes');
 
 async function scandir(cwd, username) {
-    let folderList = [];
-    let fileList = [];
-    
+
     const currentDirPath = path.join(ROOT, username, cwd);
 
     try {
