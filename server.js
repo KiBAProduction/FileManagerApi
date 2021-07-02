@@ -85,10 +85,8 @@ app.post('/ls', async (req, res) => {
             username = user.username;
         }
     });
-    const data = await scandir('/', username);
     const cwd = req.body.cwd ? req.body.cwd : '/';
-    const files = await scandir(cwd, req.body.username);
-    console.log('data', data);
+    const files = await scandir(cwd, username);
     return res.status(200).json({
         data: { files: files, cwd: cwd }
     });
