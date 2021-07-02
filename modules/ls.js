@@ -1,14 +1,14 @@
 const path = require('path');
 const fs = require('fs');
 const config = require('../config.json');
-
+const jwt = require('jsonwebtoken');
 const ROOT = path.join(__dirname, '../homes');
 
-async function scandir(cwd) {
+async function scandir(cwd, username) {
     let folderList = [];
     let fileList = [];
-
-    const currentDirPath = path.join(ROOT, cwd);
+    
+    const currentDirPath = path.join(ROOT, username, cwd);
 
     try {
         const files = await fs.promises.readdir(currentDirPath);

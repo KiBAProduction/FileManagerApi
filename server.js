@@ -32,7 +32,13 @@ function authenticateToken(req, res, next) {
 }
 
 function generateAccessToken(user) {
-    return jwt.sign(user, config.ACCESS_SECRET_KEY, { expiresIn: '15s' });
+    return jwt.sign(user, config.ACCESS_SECRET_KEY, { expiresIn: '100005s' });
+}
+
+function getUser(token) {
+    jwt.verify(user, config.ACCESS_SECRET_KEY, (user) => {
+        return user;
+    });
 }
 
 app.delete('/logout', (req, res) => {
@@ -68,8 +74,8 @@ app.post('/token', (req, res) => {
         res.json({ accessToken: accessToken });
     });
 });
-app.get('/ls', async (req, res) => {
-    const data = await scandir('/');
+app.post('/ls', async (req, res) => {
+    const data = await scandir('/', req.body.username);
     console.log('data', data);
     return res.status(200).json({
         data: data
