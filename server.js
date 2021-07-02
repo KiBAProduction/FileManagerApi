@@ -74,6 +74,7 @@ app.post('/token', (req, res) => {
         res.json({ accessToken: accessToken });
     });
 });
+
 app.post('/ls', async (req, res) => {
     let username;
     jwt.verify(req.body.token, config.ACCESS_SECRET_KEY, (error, user) => {
@@ -90,6 +91,7 @@ app.post('/ls', async (req, res) => {
         data: data
     });
 });
+
 app.get('*', (req, res) => {
     return res.status(404).json({ message: 'Not Found' });
 });
