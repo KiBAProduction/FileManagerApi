@@ -14,10 +14,9 @@ async function scandir(cwd) {
         let promises = files.map(async file => {
             const pathName = path.join(cwd, file)
             const stat = await fs.promises.stat(path.join(currentDirPath, file));
-            return { file: file, path: pathName, size: stat.size, time: stat.atime, isFolder: stat.isDirectory() };
+            return { file: file, path: pathName, size: stat.size, mtime: stat.mtime, isFolder: stat.isDirectory() };
         })
         return await Promise.all(promises);
-
 
     } catch (err) {
         throw new Error(err);
