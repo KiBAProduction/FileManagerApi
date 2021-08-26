@@ -10,6 +10,7 @@ const SECRET_KEY = 'keytest';
 const config = require('./config.json');
 const app = express();
 
+app.use(express.static('homes'));
 app.use(cors());
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
@@ -85,7 +86,7 @@ app.post('/ls', async (req, res) => {
             username = user.username;
         }
     });
-    const cwd = req.body.cwd ? req.body.cwd : '/';
+    const cwd = req.query.cwd ? req.query.cwd : '/';
     const files = await scandir(cwd, username);
     return res.status(200).json({
         data: { files: files, cwd: cwd }

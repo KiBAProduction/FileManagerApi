@@ -7,12 +7,14 @@
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [],
-  "author": "Antoine Lefevre <lefevre.a76@gmail.com>",
+  "author": "DELORD Clément <clement.delord@epitech.eu>",
   "license": "MIT",
   "dependencies": {
     "cors": "^2.8.5",
     "express": "^4.17.1",
+    "fast-folder-size": "^1.4.0",
     "jsonwebtoken": "^8.5.1",
+    "nodemon": "^2.0.12",
     "rimraf": "^3.0.2"
   }
 }
