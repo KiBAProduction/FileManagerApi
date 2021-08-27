@@ -33,7 +33,7 @@ async function scandir(cwd, username) {
                 return { file: file, fullFile: fullFile, isFolder: stat.isDirectory(), get: '?folder=' + path.join(currentDirPath, file).replace(path.join(ROOT, username, '/'), '')};
             }
             else {
-                return { file: file, fullFile: fullFile, ext: path.extname(file), download: 'http://localhost:3000/' + path.join(currentDirPath, file).replace(ROOT, ''), size: tempsize, mtime: stat.mtime.getDate()+"/"+(stat.mtime.getMonth()+1)+"/"+stat.mtime.getFullYear(), isFolder: stat.isDirectory() };
+                return { file: file, id: fullFile.substring(0, 10), fullFile: fullFile, ext: path.extname(file), download: 'http://localhost:3000/' + path.join(currentDirPath, fullFile).replace(ROOT, ''), size: tempsize, mtime: stat.mtime.getDate()+"/"+(stat.mtime.getMonth()+1)+"/"+stat.mtime.getFullYear(), isFolder: stat.isDirectory() };
             }
         })
         let results = await Promise.all(promises);

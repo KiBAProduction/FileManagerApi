@@ -2,6 +2,7 @@ const express = require('express');
 const jwt = require('jsonwebtoken');
 const cors = require('cors');
 const { scandir } = require('./modules/ls');
+const { remove } = require('./modules/ls');
 
 const PORT = 3000;
 const SECRET_KEY = 'keytest';
@@ -103,11 +104,16 @@ app.post('/rm', async (req, res) => {
             username = user.username;
         }
     });
-    const data = await scandir(req.body.cwd, username);
-    console.log('data', data);
-    return res.status(200).json({
-        data: data
-    });
+    const cwd = req.query.cwd ? req.query.cwd : false;
+    if (cwd) {
+        const files = await rm(cwd, username);
+        return res.status(200).json({
+            data: { status: 'valid' }
+        });
+    }
+    else {
+        return res.status(400); 
+    }
 });
 
 app.get('*', (req, res) => {
